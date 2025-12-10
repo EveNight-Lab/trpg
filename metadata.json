@@ -1,0 +1,5 @@
+{
+  "name": "TRPG Character Generator",
+  "description": "A web application that uses AI to generate a complete TRPG character, including a backstory, stats, and a unique character image styled as a miniature figure.",
+  "requestFramePermissions": []
+}

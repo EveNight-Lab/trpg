@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creator's Nexus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Rajdhani:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Premium Dark Theme */
+        --color-void: #030014;
+        --color-deep: #0a0a1a;
+        --color-surface: #12121f;
+        --color-elevated: #1a1a2e;
+        --color-border: #2a2a4a;
+        
+        /* Accent Colors */
+        --color-gold: #d4af37;
+        --color-gold-light: #f4d03f;
+        --color-cosmic-purple: #8b5cf6;
+        --color-cosmic-blue: #3b82f6;
+        --color-cosmic-cyan: #06b6d4;
+        --color-cosmic-pink: #ec4899;
+        
+        /* Text Colors */
+        --color-text-primary: #f1f5f9;
+        --color-text-secondary: #94a3b8;
+        --color-text-muted: #64748b;
+        
+        /* Fonts */
+        --font-display: 'Cinzel Decorative', serif;
+        --font-heading: 'Cormorant Garamond', serif;
+        --font-body: 'Rajdhani', sans-serif;
+      }
+      
+      body {
+        font-family: var(--font-body);
+        background: var(--color-void);
+        color: var(--color-text-primary);
+        overflow-x: hidden;
+        letter-spacing: 0.02em;
+      }
+      
+      .font-display {
+        font-family: var(--font-display);
+        letter-spacing: 0.1em;
+      }
+      
+      .font-heading {
+        font-family: var(--font-heading);
+        letter-spacing: 0.03em;
+      }
+      
+      .font-body {
+        font-family: var(--font-body);
+      }
+      
+      /* Legacy support */
+      .font-cinzel {
+        font-family: var(--font-display);
+        letter-spacing: 0.1em;
+      }
+      
+      .hexagon {
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      }
+      
+      /* Premium Card Styles */
+      .card-premium {
+        background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(18, 18, 31, 0.95));
+        border: 1px solid rgba(139, 92, 246, 0.15);
+        box-shadow: 
+          0 4px 20px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(139, 92, 246, 0.03),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+      }
+      
+      .card-premium:hover {
+        border-color: rgba(139, 92, 246, 0.3);
+        box-shadow: 
+          0 8px 30px rgba(0, 0, 0, 0.6),
+          0 0 60px rgba(139, 92, 246, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+      
+      /* Glass Effect */
+      .glass {
+        background: rgba(18, 18, 31, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
+      /* Golden Accent */
+      .text-gold {
+        color: var(--color-gold);
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      }
+      
+      .border-gold {
+        border-color: var(--color-gold);
+      }
+      
+      /* Glow Effects */
+      .glow-purple {
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      }
+      
+      .glow-gold {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      }
+      
+      .text-glow-purple {
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+      }
+      
+      .text-glow-gold {
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      }
+      
+      /* Premium Button */
+      .btn-premium {
+        background: linear-gradient(135deg, var(--color-cosmic-purple), #6366f1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+          0 4px 15px rgba(139, 92, 246, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .btn-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 6px 25px rgba(139, 92, 246, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+      
+      .btn-gold {
+        background: linear-gradient(135deg, var(--color-gold), #b8860b);
+        color: #000;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+          0 4px 15px rgba(212, 175, 55, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+      
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 6px 25px rgba(212, 175, 55, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+      
+      /* Cosmic Background */
+      #cosmos {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background: 
+          radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+          radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%),
+          linear-gradient(180deg, var(--color-void) 0%, var(--color-deep) 100%);
+      }
+      
+      /* Animated Stars */
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes drift {
+        from { transform: translateY(0) rotate(0deg); }
+        to { transform: translateY(-100vh) rotate(360deg); }
+      }
+      
+      .stars-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+      }
+      
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle ease-in-out infinite;
+      }
+      
+      .star-sm { width: 1px; height: 1px; }
+      .star-md { width: 2px; height: 2px; }
+      .star-lg { width: 3px; height: 3px; box-shadow: 0 0 6px white; }
+      
+      /* Nebula Effect */
+      .nebula {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: nebula-pulse 8s ease-in-out infinite;
+      }
+      
+      @keyframes nebula-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.1); opacity: 0.5; }
+      }
+      
+      /* Divider */
+      .divider-gold {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      }
+      
+      .divider-purple {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-cosmic-purple), transparent);
+      }
+      
+      /* Section Title */
+      .section-title {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+      }
+      
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: var(--color-deep);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--color-cosmic-purple), var(--color-cosmic-blue));
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #a78bfa, #60a5fa);
+      }
+      
+      /* Input Styles */
+      input, textarea, select {
+        background: var(--color-surface) !important;
+        border: 1px solid var(--color-border) !important;
+        transition: all 0.3s ease;
+      }
+      
+      input:focus, textarea:focus, select:focus {
+        border-color: var(--color-cosmic-purple) !important;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+        outline: none !important;
+      }
+    </style>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+      window.googletag = window.googletag || {cmd: []};
+    </script>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.21.0",
+    "idb": "https://aistudiocdn.com/idb@^8.0.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-white">
+    <div id="cosmos">
+      <div class="stars-layer" id="stars"></div>
+      <div class="nebula" style="width: 600px; height: 600px; top: -200px; left: -200px; background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);"></div>
+      <div class="nebula" style="width: 500px; height: 500px; bottom: -150px; right: -150px; background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent); animation-delay: -4s;"></div>
+      <div class="nebula" style="width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent); animation-delay: -2s;"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      // Generate stars dynamically
+      (function() {
+        const starsContainer = document.getElementById('stars');
+        const starCount = 150;
+        
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement('div');
+          const size = Math.random();
+          star.className = 'star ' + (size > 0.9 ? 'star-lg' : size > 0.6 ? 'star-md' : 'star-sm');
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDuration = (2 + Math.random() * 4) + 's';
+          star.style.animationDelay = Math.random() * 4 + 's';
+          starsContainer.appendChild(star);
+        }
+      })();
+    </script>
+  </body>
+</html>
