@@ -81,63 +81,63 @@ const CharacterInputForm: React.FC<CharacterInputFormProps> = ({ userInput, setU
         
         <form onSubmit={onSubmit} className="space-y-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <InputField
-              id="name"
-              label={t('nameLabel')}
-              value={userInput.name}
-              onChange={handleInputChange}
-              placeholder={t('namePlaceholder')}
+      <InputField
+        id="name"
+        label={t('nameLabel')}
+        value={userInput.name}
+        onChange={handleInputChange}
+        placeholder={t('namePlaceholder')}
               icon={icons.name}
-            />
-            <InputField
-              id="race"
-              label={t('raceLabel')}
-              value={userInput.race}
-              onChange={handleInputChange}
-              placeholder={t('racePlaceholder')}
+      />
+      <InputField
+        id="race"
+        label={t('raceLabel')}
+        value={userInput.race}
+        onChange={handleInputChange}
+        placeholder={t('racePlaceholder')}
               icon={icons.race}
-            />
+      />
           </div>
           
-          <InputField
-            id="appearance"
-            label={t('appearanceLabel')}
-            value={userInput.appearance}
-            onChange={handleInputChange}
-            placeholder={t('appearancePlaceholder')}
-            isTextArea
+      <InputField
+        id="appearance"
+        label={t('appearanceLabel')}
+        value={userInput.appearance}
+        onChange={handleInputChange}
+        placeholder={t('appearancePlaceholder')}
+        isTextArea
             icon={icons.appearance}
-          />
+      />
           
-          <InputField
-            id="personality"
-            label={t('personalityLabel')}
-            value={userInput.personality}
-            onChange={handleInputChange}
-            placeholder={t('personalityPlaceholder')}
-            isTextArea
+      <InputField
+        id="personality"
+        label={t('personalityLabel')}
+        value={userInput.personality}
+        onChange={handleInputChange}
+        placeholder={t('personalityPlaceholder')}
+        isTextArea
             icon={icons.personality}
-          />
+      />
           
-          <InputField
-            id="combatStyle"
-            label={t('combatStyleLabel')}
-            value={userInput.combatStyle}
-            onChange={handleInputChange}
-            placeholder={t('combatStylePlaceholder')}
-            isTextArea
+      <InputField
+        id="combatStyle"
+        label={t('combatStyleLabel')}
+        value={userInput.combatStyle}
+        onChange={handleInputChange}
+        placeholder={t('combatStylePlaceholder')}
+        isTextArea
             icon={icons.combatStyle}
-          />
+      />
           
-          <InputField
-            id="backstory"
-            label={t('backstoryLabel')}
-            value={userInput.backstory}
-            onChange={handleInputChange}
-            placeholder={t('backstoryPlaceholder')}
-            isTextArea
+      <InputField
+        id="backstory"
+        label={t('backstoryLabel')}
+        value={userInput.backstory}
+        onChange={handleInputChange}
+        placeholder={t('backstoryPlaceholder')}
+        isTextArea
             icon={icons.backstory}
-          />
+      />
           
           {/* Divider */}
           <div className="flex items-center justify-center gap-3 py-4">
@@ -148,13 +148,13 @@ const CharacterInputForm: React.FC<CharacterInputFormProps> = ({ userInput, setU
           
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={onReturnToLanding}
+        <button
+          type="button"
+          onClick={onReturnToLanding}
               className="flex-shrink-0 py-3 px-6 rounded-xl text-sm font-semibold text-slate-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/30 transition-all duration-300"
-            >
-              {t('backToForgeButton')}
-            </button>
+        >
+            {t('backToForgeButton')}
+        </button>
             <button
               type="submit"
               disabled={isLoading}

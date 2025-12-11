@@ -58,7 +58,7 @@ const ValueResolver: React.FC<ValueResolverProps> = ({ title, grade, bonus, stat
             const holdTimer = setTimeout(() => {
                 resolved.current = true;
                 setIsHolding(false);
-                onCompleteRef.current(displayNumber);
+           onCompleteRef.current(displayNumber);
             }, 1000); // 1초 동안 결과 고정
             
             return () => clearTimeout(holdTimer);
@@ -86,7 +86,7 @@ const ValueResolver: React.FC<ValueResolverProps> = ({ title, grade, bonus, stat
                             }}
                         />
                     ))}
-                </div>
+            </div>
             )}
             
             {/* Number display */}

@@ -63,28 +63,28 @@ const createCharacter = (
 // ==================== CHARACTER 1: KAELEN (Tank Knight) ====================
 
 const KAELEN_TRAITS: Trait[] = [
-  {
-    name: "거인의 혈맥",
-    description: "거인의 피가 섞여 초인적인 생명력을 얻었지만, 거대한 몸은 둔할 수밖에 없습니다.",
+    {
+        name: "거인의 혈맥",
+        description: "거인의 피가 섞여 초인적인 생명력을 얻었지만, 거대한 몸은 둔할 수밖에 없습니다.",
     modifications: [{ stat: "Vitality", value: 3 }, { stat: "Agility", value: -2 }]
-  },
-  {
-    name: "철벽의 자세",
-    description: "수년간의 훈련으로 속도를 희생하여 철옹성 같은 방어 자세를 완성했습니다.",
+    },
+    {
+        name: "철벽의 자세",
+        description: "수년간의 훈련으로 속도를 희생하여 철옹성 같은 방어 자세를 완성했습니다.",
     modifications: [{ stat: "Defense", value: 2 }, { stat: "Speed", value: -1 }]
-  },
-  {
-    name: "묵직한 강타",
-    description: "정확성보다는 한 방의 파괴력에 모든 것을 겁니다.",
+    },
+    {
+        name: "묵직한 강타",
+        description: "정확성보다는 한 방의 파괴력에 모든 것을 겁니다.",
     modifications: [{ stat: "Attack", value: 2 }, { stat: "Precision", value: -1 }]
-  }
+    }
 ];
 
 const KAELEN_PASSIVE: PassiveSkill = {
-  name: "최후의 저항",
-  description: "궁지에 몰려 패배가 임박했을 때, 그의 투지는 가장 밝게 타오르며 필사적인 힘을 부여합니다.",
-  condition: { type: "HP_BELOW_THRESHOLD", threshold: 0.3 },
-  effect: { type: "STAT_MODIFICATION", modification: { stat: "Attack", value: 2 } }
+    name: "최후의 저항",
+    description: "궁지에 몰려 패배가 임박했을 때, 그의 투지는 가장 밝게 타오르며 필사적인 힘을 부여합니다.",
+    condition: { type: "HP_BELOW_THRESHOLD", threshold: 0.3 },
+    effect: { type: "STAT_MODIFICATION", modification: { stat: "Attack", value: 2 } }
 };
 
 const KAELEN_SPECIAL: SpecialSkill = {
@@ -96,36 +96,36 @@ const KAELEN_SPECIAL: SpecialSkill = {
 };
 
 const KAELEN_RESONANCE: ResonancePassive = {
-  name: "창조주의 가호",
-  description: "창조주와의 첫 유대의 증표로, 전투 시작 시 작은 보호막을 얻습니다.",
-  effect: { type: 'START_OF_BATTLE_GUARD', value: 10 }
+    name: "창조주의 가호",
+    description: "창조주와의 첫 유대의 증표로, 전투 시작 시 작은 보호막을 얻습니다.",
+    effect: { type: 'START_OF_BATTLE_GUARD', value: 10 }
 };
 
 // ==================== CHARACTER 2: LYRA (Assassin) ====================
 
 const LYRA_TRAITS: Trait[] = [
-  {
-    name: "유리 대포",
-    description: "모든 것을 공격에 쏟아부어, 방어는 거의 신경 쓰지 않습니다.",
+   {
+        name: "유리 대포",
+        description: "모든 것을 공격에 쏟아부어, 방어는 거의 신경 쓰지 않습니다.",
     modifications: [{ stat: "Attack", value: 3 }, { stat: "Defense", value: -2 }]
-  },
-  {
-    name: "날랜 발",
-    description: "그녀는 천성적으로 빠르지만, 가벼운 체구 때문에 튼튼하지 못합니다.",
+   },
+   {
+        name: "날랜 발",
+        description: "그녀는 천성적으로 빠르지만, 가벼운 체구 때문에 튼튼하지 못합니다.",
     modifications: [{ stat: "Speed", value: 2 }, { stat: "Vitality", value: -1 }]
-  },
-  {
-    name: "곡예사",
-    description: "회피에 극도로 집중하여, 조준이 약간 불안정해집니다.",
+   },
+   {
+       name: "곡예사",
+       description: "회피에 극도로 집중하여, 조준이 약간 불안정해집니다.",
     modifications: [{ stat: "Agility", value: 2 }, { stat: "Precision", value: -1 }]
-  }
+   }
 ];
 
 const LYRA_PASSIVE: PassiveSkill = {
-  name: "마무리 일격",
-  description: "그녀는 상대의 약점을 파고드는 전문가이며, 가장 취약할 때 치명적인 정밀함으로 공격합니다.",
-  condition: { type: "ENEMY_HP_BELOW_THRESHOLD", threshold: 0.4 },
-  effect: { type: "STAT_MODIFICATION", modification: { stat: "Precision", value: 2 } }
+    name: "마무리 일격",
+    description: "그녀는 상대의 약점을 파고드는 전문가이며, 가장 취약할 때 치명적인 정밀함으로 공격합니다.",
+    condition: { type: "ENEMY_HP_BELOW_THRESHOLD", threshold: 0.4 },
+    effect: { type: "STAT_MODIFICATION", modification: { stat: "Precision", value: 2 } }
 };
 
 const LYRA_SPECIAL: SpecialSkill = {
@@ -137,36 +137,36 @@ const LYRA_SPECIAL: SpecialSkill = {
 };
 
 const LYRA_RESONANCE: ResonancePassive = {
-  name: "창조주의 손길",
-  description: "그녀의 창조주와의 유대는 전투 시작 시 집중할 수 있는 약간의 마나를 부여합니다.",
-  effect: { type: 'BATTLE_START_MANA', value: 1 }
+    name: "창조주의 손길",
+    description: "그녀의 창조주와의 유대는 전투 시작 시 집중할 수 있는 약간의 마나를 부여합니다.",
+    effect: { type: 'BATTLE_START_MANA', value: 1 }
 };
 
 // ==================== CHARACTER 3: ZEPHYR (Chaos Mage) ====================
 
 const ZEPHYR_TRAITS: Trait[] = [
-  {
-    name: "비전 과부하",
-    description: "막대한 마나를 얻는 대가로 육체의 건강을 희생합니다.",
+    {
+        name: "비전 과부하",
+        description: "막대한 마나를 얻는 대가로 육체의 건강을 희생합니다.",
     modifications: [{ stat: "Mana", value: 3 }, { stat: "Vitality", value: -2 }]
-  },
-  {
-    name: "유리 대포",
-    description: "모든 것을 공격에 쏟아부어, 방어는 거의 신경 쓰지 않습니다.",
+    },
+    {
+        name: "유리 대포",
+        description: "모든 것을 공격에 쏟아부어, 방어는 거의 신경 쓰지 않습니다.",
     modifications: [{ stat: "Attack", value: 2 }, { stat: "Defense", value: -1 }]
-  },
-  {
-    name: "신속 시전",
-    description: "빠른 주문 시전은 정신적 부담을 가중시켜 정확도를 떨어뜨립니다.",
+    },
+    {
+        name: "신속 시전",
+        description: "빠른 주문 시전은 정신적 부담을 가중시켜 정확도를 떨어뜨립니다.",
     modifications: [{ stat: "Speed", value: 2 }, { stat: "Precision", value: -1 }]
-  }
+    }
 ];
 
 const ZEPHYR_PASSIVE: PassiveSkill = {
-  name: "불안정한 흐름",
-  description: "체력이 낮아지면 내면의 혼돈이 폭발하여 공격에 예측 불가능한 힘을 불어넣습니다.",
-  condition: { type: "HP_BELOW_THRESHOLD", threshold: 0.4 },
-  effect: { type: "APPLY_STATUS_EFFECT_ON_HIT", chance: 0.33, effect: { type: 'STUN', duration: 1, potency: 0 } }
+    name: "불안정한 흐름",
+    description: "체력이 낮아지면 내면의 혼돈이 폭발하여 공격에 예측 불가능한 힘을 불어넣습니다.",
+    condition: { type: "HP_BELOW_THRESHOLD", threshold: 0.4 },
+    effect: { type: "APPLY_STATUS_EFFECT_ON_HIT", chance: 0.33, effect: { type: 'STUN', duration: 1, potency: 0 } }
 };
 
 const ZEPHYR_SPECIAL: SpecialSkill = {
@@ -178,9 +178,9 @@ const ZEPHYR_SPECIAL: SpecialSkill = {
 };
 
 const ZEPHYR_RESONANCE: ResonancePassive = {
-  name: "창조주의 닻",
-  description: "창조주와의 유대는 전투 시작 시 그의 혼돈적인 에너지를 안정시키는 데 도움을 줍니다.",
-  effect: { type: 'BATTLE_START_MANA', value: 2 }
+    name: "창조주의 닻",
+    description: "창조주와의 유대는 전투 시작 시 그의 혼돈적인 에너지를 안정시키는 데 도움을 줍니다.",
+    effect: { type: 'BATTLE_START_MANA', value: 2 }
 };
 
 // ==================== CHARACTER 4: THORNE (Berserker) ====================

@@ -38,16 +38,16 @@ const BattleRewardModal: React.FC<BattleRewardModalProps> = ({ isOpen, winner, g
           <div className="aspect-square rounded-xl overflow-hidden bg-slate-900">
             {generatedImage === 'ERROR' ? (
               <div className="w-full h-full flex items-center justify-center">
-                <p className="text-slate-400">{t('generationFailed')}</p>
-              </div>
+                    <p className="text-slate-400">{t('generationFailed')}</p>
+                </div>
             ) : (
-              <img 
-                src={`data:image/jpeg;base64,${generatedImage}`} 
-                alt={`Victory Memento for ${winner?.name}`}
-                className="w-full h-full object-cover"
-              />
+                <img 
+                    src={`data:image/jpeg;base64,${generatedImage}`} 
+                    alt={`Victory Memento for ${winner?.name}`}
+                    className="w-full h-full object-cover"
+                />
             )}
-          </div>
+        </div>
         </div>
       </div>
       
@@ -58,12 +58,12 @@ const BattleRewardModal: React.FC<BattleRewardModalProps> = ({ isOpen, winner, g
         </p>
       )}
       
-      <button
-        onClick={onClose}
+        <button
+            onClick={onClose}
         className="btn-gold px-8 py-3 rounded-xl font-semibold text-lg"
-      >
-        {t('returnToNexusButton')}
-      </button>
+        >
+            {t('returnToNexusButton')}
+        </button>
     </div>
   );
   

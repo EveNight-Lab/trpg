@@ -75,13 +75,13 @@ const AscensionModal: React.FC<AscensionModalProps> = ({ isOpen, onClose, charac
           {/* Content */}
           <div className="flex-grow min-w-0">
             <p className="font-heading text-base font-semibold text-white truncate">{title}</p>
-            <p className="text-xs text-slate-400">{description}</p>
-          </div>
+          <p className="text-xs text-slate-400">{description}</p>
+        </div>
           
           {/* Button */}
-          <button
-            onClick={() => handleUnlock(abilityType, cost)}
-            disabled={!canAfford}
+        <button
+          onClick={() => handleUnlock(abilityType, cost)}
+          disabled={!canAfford}
             className={`flex-shrink-0 py-2 px-4 rounded-lg text-sm font-bold transition-all duration-300 ${
               canAfford
                 ? 'btn-gold'
@@ -89,7 +89,7 @@ const AscensionModal: React.FC<AscensionModalProps> = ({ isOpen, onClose, charac
             }`}
           >
             {cost} VP
-          </button>
+        </button>
         </div>
       </div>
     );
@@ -128,12 +128,12 @@ const AscensionModal: React.FC<AscensionModalProps> = ({ isOpen, onClose, charac
         </div>
 
         {/* Close button */}
-        <button
-          onClick={onClose}
+          <button
+            onClick={onClose}
           className="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-slate-300 bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
-        >
-          {t('cancelButton')}
-        </button>
+          >
+            {t('cancelButton')}
+          </button>
       </div>
     </div>
   );

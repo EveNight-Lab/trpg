@@ -37,7 +37,7 @@ const HpBar: React.FC<{ current: number; max: number; isFlipped?: boolean }> = (
         if (percentage > 30) return 'from-amber-400 to-orange-500';
         return 'from-red-500 to-rose-600';
     };
-    
+
     return (
         <div className="w-full">
             <div className="flex justify-between items-center mb-1">
@@ -52,16 +52,16 @@ const HpBar: React.FC<{ current: number; max: number; isFlipped?: boolean }> = (
                     <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/20" />
                 </div>
-            </div>
         </div>
-    );
+    </div>
+);
 };
 
 const GaugeBar: React.FC<{ value: number; max: number; isFlipped?: boolean }> = ({ value, max, isFlipped }) => {
     const percentage = Math.min(100, (value / max) * 100);
     const isFull = percentage >= 100;
     
-    return (
+        return (
         <div className="w-full">
             <div className="flex justify-between items-center mb-1">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">ATB</span>
@@ -81,8 +81,8 @@ const GaugeBar: React.FC<{ value: number; max: number; isFlipped?: boolean }> = 
                     {!isFull && <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />}
                 </div>
             </div>
-        </div>
-    );
+            </div>
+        );
 };
 
 const StatusEffectBadge: React.FC<{ effect: ActiveStatusEffect }> = ({ effect }) => {
@@ -113,10 +113,10 @@ const DamageNumber: React.FC<{ value: number | string; type: 'damage' | 'heal' |
         block: 'text-blue-400 text-4xl sm:text-5xl',
         miss: 'text-slate-400 text-4xl sm:text-5xl italic',
     };
-    
+
     return (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-            <span 
+             <span 
                 className={`font-display font-bold ${styles[type]} animate-damage-popup`}
                 style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 0 40px currentColor' }}
             >
@@ -132,7 +132,7 @@ const SkillActivation: React.FC<{
     position: 'left' | 'right';
 }> = ({ name, type, position }) => {
     const isActive = type === 'active';
-    
+
     return (
         <div className={`absolute top-1/2 ${position === 'left' ? 'left-[15%]' : 'right-[15%]'} -translate-y-1/2 z-40`}>
             <div className={`relative animate-skill-burst`}>
@@ -277,12 +277,12 @@ const CharacterDisplay: React.FC<{
                                 : 'border-slate-600'
                     } ${character.currentHp <= 0 ? 'grayscale' : ''}`}>
                         {character.base.image ? (
-                            <img
-                                src={`data:image/jpeg;base64,${character.base.image}`}
-                                alt={character.base.name}
+        <img
+            src={`data:image/jpeg;base64,${character.base.image}`}
+            alt={character.base.name}
                                 className={`w-full h-full object-cover ${isFlipped ? 'scale-x-[-1]' : ''}`}
-                            />
-                        ) : (
+        />
+    ) : (
                             <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
                                 <span className="text-5xl font-display font-bold text-slate-500">{character.base.name.charAt(0)}</span>
                             </div>
@@ -340,7 +340,7 @@ const BattleLog: React.FC<{ log: string[]; winner: any }> = ({ log, winner }) =>
                     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <h3 className="font-heading text-sm font-semibold text-slate-300 uppercase tracking-wider">{t('battleLogTitle')}</h3>
-            </div>
+                    </div>
             <div className="flex-1 overflow-y-auto px-4 py-2 space-y-1" ref={logRef}>
                 {log.map((entry, index) => (
                     <p key={index} className="text-sm text-slate-400 animate-fade-in leading-relaxed">
@@ -382,11 +382,11 @@ const VictoryScreen: React.FC<{ winner: any; onReturn: () => void }> = ({ winner
                         ) : (
                             <div className="w-full h-full bg-slate-800 flex items-center justify-center">
                                 <span className="text-4xl font-display font-bold text-slate-600">{winner.base.name.charAt(0)}</span>
-                            </div>
+                        </div>
                         )}
                     </div>
                 </div>
-                
+
                 <h2 className="font-display text-3xl font-bold text-white mb-2">{winner.base.name}</h2>
                 <p className="text-slate-400 italic mb-8">"{winner.logMessage}"</p>
                 
@@ -443,7 +443,7 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
             return () => clearTimeout(timer);
         }
     }, [isFrenzy]);
-    
+
     useEffect(() => {
         if (winner) {
             const timer = setTimeout(() => setShowVictory(true), 1500);
@@ -454,7 +454,7 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
     return (
         <>
             {/* Battle Animation Styles */}
-            <style>{`
+                        <style>{`
                 .character-container {
                     transition: transform 0.3s ease-out;
                 }
@@ -513,7 +513,7 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
                     20% { opacity: 1; transform: translateY(-10px) scale(1.2); }
                     80% { opacity: 1; transform: translateY(-30px) scale(1); }
                     100% { opacity: 0; transform: translateY(-60px) scale(0.8); }
-                }
+                            }
                 @keyframes skill-burst {
                     0% { opacity: 0; transform: scale(0.5); }
                     30% { opacity: 1; transform: scale(1.1); }
@@ -547,7 +547,7 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
                 .animate-skill-burst { animation: skill-burst 1.5s ease-out forwards; }
                 .animate-speech-bubble { animation: speech-bubble 2s ease-out forwards; }
                 .animate-frenzy-burst { animation: frenzy-burst 2s ease-out forwards; }
-            `}</style>
+                        `}</style>
             
             <div className="max-w-6xl mx-auto animate-fade-in flex flex-col min-h-[80vh]">
                 {/* Battle Arena */}
@@ -581,15 +581,15 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
                     {/* Fighters */}
                     <div className="relative z-10 flex items-center justify-between w-full max-w-4xl gap-8">
                         <div className="flex-1">
-                            <CharacterDisplay 
-                                character={fighters[0]} 
-                                isTurn={currentAttackerId === fighters[0].base.id}
-                                isFrenzy={isFrenzy}
-                                activeDialogue={activeDialogue}
-                                animationTrigger={animationTrigger}
-                                battleEvent={battleEvent}
-                            />
-                        </div>
+                    <CharacterDisplay 
+                        character={fighters[0]} 
+                        isTurn={currentAttackerId === fighters[0].base.id}
+                        isFrenzy={isFrenzy}
+                        activeDialogue={activeDialogue}
+                        animationTrigger={animationTrigger}
+                        battleEvent={battleEvent}
+                    />
+                </div>
                         
                         {/* VS indicator */}
                         <div className="flex-shrink-0 relative">
@@ -600,19 +600,19 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
                         </div>
                         
                         <div className="flex-1">
-                            <CharacterDisplay 
-                                character={fighters[1]} 
-                                isFlipped 
-                                isTurn={currentAttackerId === fighters[1].base.id}
-                                isFrenzy={isFrenzy}
-                                activeDialogue={activeDialogue}
-                                animationTrigger={animationTrigger}
-                                battleEvent={battleEvent}
-                            />
+                    <CharacterDisplay 
+                        character={fighters[1]} 
+                        isFlipped 
+                        isTurn={currentAttackerId === fighters[1].base.id}
+                        isFrenzy={isFrenzy}
+                        activeDialogue={activeDialogue}
+                        animationTrigger={animationTrigger}
+                        battleEvent={battleEvent}
+                    />
                         </div>
-                    </div>
                 </div>
-                
+            </div>
+            
                 {/* Roll Display Area */}
                 <div className="h-48 flex items-center justify-center px-4">
                     {hitCheckRequest && (
@@ -635,8 +635,8 @@ const BattleScreen: React.FC<BattleScreenProps> = ({ combatant1, combatant2, onB
                             leftFighterId={fighters[0].base.id} 
                         />
                     )}
-                </div>
-                
+            </div>
+
                 {/* Battle Log */}
                 <div className="px-4 pb-4">
                     <BattleLog log={log} winner={winner} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface LandingPageProps {
-  onNavigate: (view: 'form' | 'gallery' | 'placeholder') => void;
+  onNavigate: (view: 'form' | 'gallery' | 'placeholder' | 'webllm-demo') => void;
 }
 
 const GoldenDivider: React.FC = () => (
@@ -143,6 +143,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         />
       </div>
       
+      {/* WebLLM Demo Button */}
+      <div className="mt-12 animate-fade-in opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+        <button
+          onClick={() => onNavigate('webllm-demo')}
+          className="group relative px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600/20 to-teal-600/20 border border-emerald-500/30 hover:border-emerald-500/60 transition-all duration-300"
+        >
+          <span className="text-emerald-400 font-semibold flex items-center gap-2">
+            <span className="text-lg">🧪</span>
+            WebLLM 데모 (무료 AI)
+          </span>
+          <span className="block text-xs text-slate-500 mt-1">브라우저 GPU로 한국어 테스트</span>
+        </button>
+      </div>
+
       {/* Footer ornament */}
       <div className="mt-16 animate-fade-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
         <div className="flex items-center justify-center gap-2 text-slate-600">

@@ -190,11 +190,11 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
       ? formatCondition(character.specialSkill.activation.condition, t)
       : null;
       
-  const expForNextLevel = RESONANCE_LEVEL_THRESHOLDS[character.resonanceLevel + 1];
-  const expForCurrentLevel = RESONANCE_LEVEL_THRESHOLDS[character.resonanceLevel];
-  const resonanceProgress = expForNextLevel 
-      ? ((character.resonanceExp - expForCurrentLevel) / (expForNextLevel - expForCurrentLevel)) * 100
-      : 100;
+    const expForNextLevel = RESONANCE_LEVEL_THRESHOLDS[character.resonanceLevel + 1];
+    const expForCurrentLevel = RESONANCE_LEVEL_THRESHOLDS[character.resonanceLevel];
+    const resonanceProgress = expForNextLevel 
+        ? ((character.resonanceExp - expForCurrentLevel) / (expForNextLevel - expForCurrentLevel)) * 100
+        : 100;
 
   return (
     <>
@@ -211,7 +211,7 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wider gradient-text">{character.name}</h2>
               <p className="font-heading text-lg text-slate-400 mt-1 italic">{character.race}</p>
               
-              {character.resonanceLevel > 0 && (
+             {character.resonanceLevel > 0 && (
                 <div className="mt-6 max-w-xs mx-auto">
                     <div className="flex justify-between items-center text-xs mb-2">
                         <span className="font-semibold text-rose-400">{t('resonanceLevel', { level: String(character.resonanceLevel) })}</span>
@@ -221,7 +221,7 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
                         <div className="h-full rounded-full bg-gradient-to-r from-rose-500 to-pink-500 transition-all duration-500" style={{ width: `${resonanceProgress}%` }}></div>
                     </div>
                 </div>
-              )}
+             )}
             </div>
           </div>
 
@@ -233,19 +233,19 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
                     <div className="relative w-full max-w-[280px]">
                         <div className="aspect-square p-1 rounded-2xl bg-gradient-to-br from-amber-500/50 via-violet-500/50 to-cyan-500/50">
                           <div className="w-full h-full rounded-xl overflow-hidden bg-black">
-                             {character.image ? (
-                                <img 
-                                    src={`data:image/jpeg;base64,${character.image}`} 
+                         {character.image ? (
+                            <img 
+                                src={`data:image/jpeg;base64,${character.image}`} 
                                     alt={character.name}
                                     className="w-full h-full object-cover"
-                                />
-                             ) : (
+                            />
+                         ) : (
                                 <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
                                     <span className="text-7xl font-display text-slate-700">{character.name.charAt(0)}</span>
-                                </div>
-                             )}
+                            </div>
+                         )}
                           </div>
-                        </div>
+                      </div>
                     </div>
                 </div>
                 
@@ -257,9 +257,9 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
                           <p className="text-sm text-slate-400 italic">"{character.specialSkill.description}"</p>
                           <div className="flex flex-wrap gap-2 mt-3 text-xs font-mono">
                               <span className="bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-500/20">{character.specialSkill.effectDescription}</span>
-                              {skillConditionText && (
+                          {skillConditionText && (
                                 <span className="bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-lg border border-cyan-500/20">{skillConditionText}</span>
-                              )}
+                          )}
                           </div>
                       </div>
                     </Section>
@@ -287,10 +287,10 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
 
               <div className="space-y-5">
                 <Section title={t('stats')}>
-                    <HeptagonStats character={character} />
+                        <HeptagonStats character={character} />
                 </Section>
                 
-                <Section title={t('combatRecord')}>
+                 <Section title={t('combatRecord')}>
                   <div className="flex justify-around items-center text-center py-2">
                     <div>
                       <span className="text-xs font-semibold text-emerald-500 uppercase tracking-wider">{t('wins')}</span>
@@ -307,8 +307,8 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
                     <button onClick={() => setIsMementosModalOpen(true)}
                         className="w-full py-2.5 text-sm font-semibold rounded-lg bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:border-violet-500/30 transition-all">
                         {t('viewMementosButton')}
-                    </button>
-                    {isSaved && (
+                      </button>
+                   {isSaved && (
                      <button onClick={() => setIsAscensionModalOpen(true)} disabled={character.victoryPoints < 1}
                         className="w-full py-2.5 text-sm font-semibold rounded-lg btn-gold disabled:opacity-40 disabled:cursor-not-allowed transition-all">
                         {t('ascendButton')}

@@ -17,9 +17,10 @@ import { applyStatModification, parseDiceNotation, STAT_GRADES, getFinalCharacte
 import RecruitmentResultModal from './components/RecruitmentResultModal';
 import LandingPage from './components/LandingPage';
 import PlaceholderView from './components/PlaceholderView';
+import WebLLMDemo from './components/WebLLMDemo';
 import { RESONANCE_EXP_PER_WIN, RESONANCE_EXP_PER_CHAT, RESONANCE_LEVEL_THRESHOLDS, RECRUITMENT_COOLDOWN_MS } from './utils/constants';
 
-type View = 'landing' | 'form' | 'sheet' | 'gallery' | 'battle' | 'chat' | 'placeholder';
+type View = 'landing' | 'form' | 'sheet' | 'gallery' | 'battle' | 'chat' | 'placeholder' | 'webllm-demo';
 
 
 // Internal types for the data format stored in localStorage (without image data)
@@ -733,6 +734,18 @@ const AppContent: React.FC = () => {
         return null;
       case 'placeholder':
         return <PlaceholderView onBack={() => setView('landing')} />;
+      case 'webllm-demo':
+        return (
+          <div>
+            <button 
+              onClick={() => setView('landing')}
+              className="mb-4 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-white"
+            >
+              ← 돌아가기
+            </button>
+            <WebLLMDemo />
+          </div>
+        );
       case 'form':
       default:
         return <CharacterInputForm 

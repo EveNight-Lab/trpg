@@ -103,7 +103,7 @@ const CharacterCard: React.FC<{
                                     <span className="text-6xl font-display text-slate-400 block">?</span>
                                     <span className="text-xs text-slate-500 uppercase tracking-wider mt-2">Unknown</span>
                                 </div>
-                            </div>
+                             </div>
                         )}
 
                         {/* Trophy badge */}
@@ -111,7 +111,7 @@ const CharacterCard: React.FC<{
                             <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 border border-amber-500/30">
                                 <TrophyIcon className="w-4 h-4 text-amber-400" />
                                 <span className="font-bold text-white text-sm">{character.wins}</span>
-                            </div>
+                    </div>
                         )}
                         
                         {/* Selected indicator */}
@@ -128,26 +128,26 @@ const CharacterCard: React.FC<{
                     
                     {/* Action button */}
                     <div className="p-3 bg-black/30">
-                        {isRecruited ? (
-                            <button
-                                onClick={() => onSelect(character.id)}
+                     {isRecruited ? (
+                        <button
+                            onClick={() => onSelect(character.id)}
                                 className={`w-full text-sm font-semibold py-2.5 px-3 rounded-lg transition-all duration-300 ${
                                     isSelected 
                                         ? 'btn-gold' 
                                         : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:border-violet-500/30'
                                 }`}
-                            >
-                                {isSelected ? t('selectedButton') : t('selectButton')}
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => onStartRecruitment(character)}
-                                disabled={cooldownActive}
+                        >
+                            {isSelected ? t('selectedButton') : t('selectButton')}
+                        </button>
+                    ) : (
+                         <button
+                            onClick={() => onStartRecruitment(character)}
+                            disabled={cooldownActive}
                                 className="w-full text-sm font-semibold py-2.5 px-3 rounded-lg transition-all duration-300 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/30 disabled:bg-slate-800 disabled:text-slate-500 disabled:border-slate-700 disabled:cursor-not-allowed"
-                            >
-                                {cooldownActive ? <CountdownTimer expiryTimestamp={character.cooldownUntil!} /> : t('attemptRecruitmentButton')}
-                            </button>
-                        )}
+                        >
+                            {cooldownActive ? <CountdownTimer expiryTimestamp={character.cooldownUntil!} /> : t('attemptRecruitmentButton')}
+                        </button>
+                    )}
                     </div>
                 </div>
             </div>
@@ -261,7 +261,7 @@ const CharacterGallery: React.FC<CharacterGalleryProps> = ({ characters, onStart
 
             {/* Action Buttons */}
             <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
-                <button
+                 <button
                     onClick={onNavigateToForm}
                     className="px-8 py-3 rounded-xl font-semibold text-slate-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/30 transition-all duration-300"
                 >
@@ -277,7 +277,7 @@ const CharacterGallery: React.FC<CharacterGalleryProps> = ({ characters, onStart
                             <path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 6l6-3 3 3-3 6-3-3"/>
                             <path d="M9.5 17.5L21 6V3h-3L6.5 14.5"/>
                         </svg>
-                        {t('startBattleButton')}
+                    {t('startBattleButton')}
                     </span>
                 </button>
             </div>
