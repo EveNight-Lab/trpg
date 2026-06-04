@@ -1,6 +1,7 @@
 import React from 'react';
 import { GeneratedCharacter } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getImageUrl } from '../utils/imageUtils';
 
 interface BattleRewardModalProps {
   isOpen: boolean;
@@ -42,7 +43,7 @@ const BattleRewardModal: React.FC<BattleRewardModalProps> = ({ isOpen, winner, g
                 </div>
             ) : (
                 <img 
-                    src={`data:image/jpeg;base64,${generatedImage}`} 
+                    src={getImageUrl(generatedImage)} 
                     alt={`Victory Memento for ${winner?.name}`}
                     className="w-full h-full object-cover"
                 />

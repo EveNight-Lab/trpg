@@ -182,6 +182,7 @@ const getEffectiveStats = (fighter: FighterState, opponent: FighterState, turnCo
             case 'HP_ABOVE_THRESHOLD': return fighter.currentHp / maxHp >= condition.threshold!;
             case 'HP_BELOW_THRESHOLD': return fighter.currentHp / maxHp <= condition.threshold!;
             case 'ENEMY_HP_BELOW_THRESHOLD': return opponent.currentHp / opponentMaxHp <= condition.threshold!;
+            case 'ENEMY_HP_ABOVE_THRESHOLD': return opponent.currentHp / opponentMaxHp >= condition.threshold!;
             case 'ENEMY_HAS_STATUS_EFFECT': return opponent.statusEffects.length > 0;
             case 'SELF_HAS_STATUS_EFFECT': 
                 return condition.statusType 
@@ -264,6 +265,7 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
         }
 
         case 'PROCESS_TURN_START': {
+                if (state.phase !== 'TURN_START') return state;
                 let { log, turnCount, isFrenzy } = { ...state };
                 let fighters = JSON.parse(JSON.stringify(state.fighters)) as [FighterState, FighterState];
                 let turnContext = { ...state.turnContext! };
@@ -405,19 +407,21 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
         }
 
         case 'RESOLVE_HIT_CHECK': {
+            if (state.phase !== 'AWAITING_HIT_CHECK') return state;
             const { turnContext } = state;
             let fighters = JSON.parse(JSON.stringify(state.fighters));
             let attacker = fighters.find((f: FighterState) => f.base.id === turnContext!.attackerId)!;
             
             let localTurnContext = { ...turnContext! };
             let activeSkill = state.activeSkill;
+            let nextLog = [...state.log];
 
             if (action.didHit) {
                 const specialSkill = attacker.base.specialSkill;
                 if (specialSkill && specialSkill.activation.timing === 'AFTER_HIT_SUCCESS' && attacker.mana > 0 && checkActiveSkillCondition(attacker, specialSkill.activation.condition)) {
                     attacker.mana -= 1;
                     activeSkill = { skillName: specialSkill.name, characterId: attacker.base.id };
-                    state.log.push(t('skillUsedMessage', { characterName: attacker.base.name, skillName: specialSkill.name }));
+                    nextLog.push(t('skillUsedMessage', { characterName: attacker.base.name, skillName: specialSkill.name }));
                     if (specialSkill.effect.type === 'APPLY_STATUS_EFFECT') {
                         localTurnContext.statusOnHit = specialSkill.effect;
                     }
@@ -427,7 +431,7 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
                 if (passive && passive.effect.type === 'APPLY_STATUS_EFFECT_ON_HIT') {
                     if (Math.random() < passive.effect.chance) {
                         localTurnContext.statusOnHit = { type: 'APPLY_STATUS_EFFECT', effect: passive.effect.effect };
-                        state.log.push(t('traitActivatedMessage', { characterName: attacker.base.name, traitName: passive.name }));
+                        nextLog.push(t('traitActivatedMessage', { characterName: attacker.base.name, traitName: passive.name }));
                     }
                 }
 
@@ -435,10 +439,11 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
                 return {
                     ...state,
                     phase: 'ANIMATING_APPROACH',
-                    log: [...state.log, t('attackSuccess')],
+                    log: [...nextLog, t('attackSuccess')],
                     turnContext: localTurnContext,
                     fighters: fighters,
                     activeSkill: activeSkill,
+                    hitCheckRequest: null,
                     animKey: state.animKey + 1,
                     animationTrigger: { key: state.animKey + 1, type: 'APPROACH', attackerId: turnContext!.attackerId, defenderId: turnContext!.defenderId },
                     activeDialogue: line ? { characterId: turnContext!.attackerId, text: line } : null,
@@ -448,7 +453,8 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
                 return {
                     ...state,
                     phase: 'ANIMATING_MISS',
-                    log: [...state.log, t('attackFailure')],
+                    log: [...nextLog, t('attackFailure')],
+                    hitCheckRequest: null,
                     animKey: state.animKey + 1,
                     animationTrigger: { key: state.animKey + 1, type: 'MISS_SEQUENCE', attackerId: turnContext!.attackerId, defenderId: turnContext!.defenderId },
                     activeDialogue: line ? { characterId: turnContext!.defenderId, text: line } : null,
@@ -457,6 +463,7 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
         }
 
         case 'RESOLVE_DAMAGE_ROLL': {
+            if (state.phase !== 'AWAITING_DAMAGE_ROLL') return state;
             const { turnContext } = state;
             const { attackerRoll, defenderRoll } = action;
             let fighters = JSON.parse(JSON.stringify(state.fighters));
@@ -567,6 +574,7 @@ const battleReducer = (state: BattleState, action: BattleAction, t: (key: Transl
         }
         
         case 'FINALIZE_TURN': {
+            if (state.phase !== 'TURN_END') return state;
             if (state.winner) {
                 return { ...state, phase: 'ENDED', turnContext: null };
             }
@@ -597,7 +605,7 @@ export const useBattleEngine = (combatant1: GeneratedCharacter, combatant2: Gene
     
     const initialState: BattleState = {
         fighters: [initializeFighterState(combatant1), initializeFighterState(combatant2)],
-        log: [`The battle begins between ${combatant1.name} and ${combatant2.name}!`],
+        log: [t('battleBeginsMessage', { char1: combatant1.name, char2: combatant2.name })],
         winner: null,
         phase: 'IDLE',
         turnCount: 0,

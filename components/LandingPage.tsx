@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface LandingPageProps {
-  onNavigate: (view: 'form' | 'gallery' | 'placeholder' | 'webllm-demo') => void;
+  onNavigate: (view: 'form' | 'gallery') => void;
 }
 
 const GoldenDivider: React.FC = () => (
@@ -23,7 +23,7 @@ const NavCard: React.FC<{
 }> = ({ title, subtitle, onClick, icon, gradient, delay }) => (
   <button 
     onClick={onClick}
-    className={`group relative w-full max-w-sm animate-fade-in-up opacity-0`}
+    className="group relative w-full max-w-sm animate-fade-in-up opacity-0"
     style={{ animationDelay: delay, animationFillMode: 'forwards' }}
   >
     {/* Outer glow */}
@@ -80,14 +80,6 @@ const GalaxyIcon: React.FC = () => (
   </svg>
 );
 
-const VoidIcon: React.FC = () => (
-  <svg className="w-12 h-12 text-cyan-400 group-hover:text-amber-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="12" r="10"/>
-    <circle cx="12" cy="12" r="6" strokeDasharray="2 2"/>
-    <circle cx="12" cy="12" r="2"/>
-  </svg>
-);
-
 const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
 
@@ -114,7 +106,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       </header>
       
       {/* Navigation Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-5xl">
+      <div className="flex flex-col sm:flex-row gap-6 lg:gap-8 w-full max-w-3xl justify-center items-center">
         <NavCard
           title={t('landingCreateTitle')}
           subtitle={t('landingCreateSubtitle')}
@@ -132,33 +124,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           gradient="from-blue-600 via-indigo-600 to-violet-600"
           delay="0.4s"
         />
-        
-        <NavCard
-          title={t('landingVoidTitle')}
-          subtitle={t('landingVoidSubtitle')}
-          onClick={() => onNavigate('placeholder')}
-          icon={<VoidIcon />}
-          gradient="from-cyan-600 via-teal-600 to-blue-600"
-          delay="0.6s"
-        />
       </div>
       
-      {/* WebLLM Demo Button */}
-      <div className="mt-12 animate-fade-in opacity-0" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
-        <button
-          onClick={() => onNavigate('webllm-demo')}
-          className="group relative px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600/20 to-teal-600/20 border border-emerald-500/30 hover:border-emerald-500/60 transition-all duration-300"
-        >
-          <span className="text-emerald-400 font-semibold flex items-center gap-2">
-            <span className="text-lg">🧪</span>
-            WebLLM 데모 (무료 AI)
-          </span>
-          <span className="block text-xs text-slate-500 mt-1">브라우저 GPU로 한국어 테스트</span>
-        </button>
-      </div>
-
       {/* Footer ornament */}
-      <div className="mt-16 animate-fade-in opacity-0" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+      <div className="mt-16 animate-fade-in opacity-0" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
         <div className="flex items-center justify-center gap-2 text-slate-600">
           <div className="w-16 h-px bg-gradient-to-r from-transparent to-slate-700"></div>
           <span className="text-xs tracking-widest uppercase">Est. MMXXIV</span>

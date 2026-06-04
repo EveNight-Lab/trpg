@@ -109,6 +109,7 @@ export const translations = {
     goToSheetButton: "정보 보기",
     perfectChain: "완벽한 연쇄!",
     // BattleScreen.tsx
+    battleBeginsMessage: "{char1}와(과) {char2}의 결투가 시작됩니다!",
     battleLogTitle: "전투 기록",
     victoryMessage: "{winnerName} 승리!",
     turnMessage: "{characterName}의 공격 턴!",
@@ -200,6 +201,12 @@ export const translations = {
     sendMessageButton: "전송",
     returnToSheetButton: "정보 보기로 돌아가기",
     chatError: "(시스템 오류: 피조물이 지금은 응답할 수 없습니다. 잠시 후 다시 시도해 주세요.)",
+    geminiForgeTitle: "Gemini AI 화로",
+    geminiForgeActiveDesc: "Gemini 2.5 Flash 기반 실제 AI 서사 생성 활성화",
+    geminiForgeInactiveDesc: "로컬 오프라인 템플릿 기반 생성 활성화",
+    geminiApiKeyLabel: "Gemini API 키",
+    geminiApiKeyPlaceholder: "AI 생성을 위한 API 키를 입력하세요",
+    geminiApiKeyHelp: "* 입력하신 API 키는 브라우저 로컬 스토리지에만 보관되며 구글 서버로 직접 안전하게 전송됩니다.",
   },
   en: {
     // App.tsx
@@ -311,6 +318,7 @@ export const translations = {
     goToSheetButton: "View Sheet",
     perfectChain: "Perfect Chain!",
     // BattleScreen.tsx
+    battleBeginsMessage: "The battle begins between {char1} and {char2}!",
     battleLogTitle: "Combat Log",
     victoryMessage: "{winnerName} is victorious!",
     turnMessage: "{characterName}'s Turn!",
@@ -402,5 +410,11 @@ export const translations = {
     sendMessageButton: "Send",
     returnToSheetButton: "Return to Sheet",
     chatError: "(System Error: The creation is unable to respond right now. Please try again in a moment.)",
+    geminiForgeTitle: "Gemini AI Forge",
+    geminiForgeActiveDesc: "Real AI narrative generation enabled via Gemini 2.5 Flash",
+    geminiForgeInactiveDesc: "Local offline template-based generation enabled",
+    geminiApiKeyLabel: "Gemini API Key",
+    geminiApiKeyPlaceholder: "Enter your API key for AI generation",
+    geminiApiKeyHelp: "* Your API key is stored only in the browser's local storage and sent directly to Google servers.",
   },
 };

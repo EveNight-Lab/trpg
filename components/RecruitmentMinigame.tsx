@@ -83,10 +83,15 @@ const RecruitmentMinigame: React.FC<RecruitmentMinigameProps> = ({ character, on
       
       setIndicatorPosition(prevPos => {
         let newPos = prevPos + (speed * (deltaTime / 1000) * indicatorDirection.current);
-        if (newPos >= 1 || newPos <= 0) {
-          newPos = Math.max(0, Math.min(1, newPos));
+        // 끝에 닿으면 방향을 반전해 바운스 처리
+        if (newPos >= 1) {
+          newPos = 1 - (newPos - 1); // 반사
+          indicatorDirection.current = -1;
+        } else if (newPos <= 0) {
+          newPos = Math.abs(newPos); // 반사
+          indicatorDirection.current = 1;
         }
-        positionRef.current = newPos; // Update the ref with the real-time value
+        positionRef.current = newPos;
         return newPos;
       });
     }
@@ -112,7 +117,7 @@ const RecruitmentMinigame: React.FC<RecruitmentMinigameProps> = ({ character, on
     if (gameStatus === 'won' || gameStatus === 'lost') return;
 
     if (gameStatus === 'idle') {
-        chainDirectionRef.current = Math.random() > 0.5 ? 1 : -1;
+        chainDirectionRef.current = 1; // Always start from left to right
         setGameStatus('chaining');
         setChainIndex(0);
         setChainResults(Array(gameParams.manaCount).fill('pending'));
@@ -150,7 +155,7 @@ const RecruitmentMinigame: React.FC<RecruitmentMinigameProps> = ({ character, on
             
             setChainIndex(0);
             setChainResults(Array(gameParams.manaCount).fill('pending'));
-            chainDirectionRef.current = Math.random() > 0.5 ? 1 : -1; // New direction
+            chainDirectionRef.current = 1; // Always start from left to right
             
             setTimeout(startBarAnimation, gameParams.timeBetweenBars);
 
@@ -183,9 +188,15 @@ const RecruitmentMinigame: React.FC<RecruitmentMinigameProps> = ({ character, on
             </div>
         </div>
 
-        {gameStatus === 'won' && <p className="text-2xl font-bold text-green-400 my-4 animate-pulse">{t('gameWon')}</p>}
-        {gameStatus === 'lost' && <p className="text-2xl font-bold text-red-400 my-4 animate-pulse">{t('gameLost')}</p>}
-        {feedback === 'perfect' && <p className="text-lg font-bold text-yellow-300 my-4 animate-pulse">{t('perfectChain')}</p>}
+        <div className="h-12 flex flex-col items-center justify-center my-2">
+          {gameStatus === 'won' ? (
+            <div className="text-2xl font-bold text-green-400 animate-pulse">{t('gameWon')}</div>
+          ) : gameStatus === 'lost' ? (
+            <div className="text-2xl font-bold text-red-400 animate-pulse">{t('gameLost')}</div>
+          ) : feedback === 'perfect' ? (
+            <div className="text-lg font-bold text-yellow-300 animate-pulse">{t('perfectChain')}</div>
+          ) : null}
+        </div>
         
         <div className="mt-8 space-y-4">
              <div className="flex justify-center items-center gap-2 h-6">

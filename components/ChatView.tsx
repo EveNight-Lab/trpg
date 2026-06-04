@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { GeneratedCharacter, ChatMessage } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import GeminiApiPanel from './GeminiApiPanel';
 
 interface ChatViewProps {
   character: GeneratedCharacter;
@@ -58,7 +59,11 @@ const ChatView: React.FC<ChatViewProps> = ({ character, onSendMessage, onBack, i
         </div>
       </div>
 
-      {/* Chat History */}
+      {/* AI 설정 패널 (compact) */}
+      <div className="flex-shrink-0 px-4 pb-2">
+        <GeminiApiPanel compact />
+      </div>
+
       <div ref={chatHistoryRef} className="flex-grow p-4 space-y-4 overflow-y-auto">
         {chatHistory.map((msg, index) => (
           <ChatBubble key={index} message={msg} />

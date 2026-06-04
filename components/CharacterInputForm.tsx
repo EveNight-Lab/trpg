@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserCharacterInput } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import GeminiApiPanel from './GeminiApiPanel';
 
 interface InputFieldProps {
   id: keyof UserCharacterInput;
@@ -79,6 +80,9 @@ const CharacterInputForm: React.FC<CharacterInputFormProps> = ({ userInput, setU
           <p className="text-slate-500 text-sm mt-1">{t('landingCreateSubtitle')}</p>
         </div>
         
+        {/* Gemini API 설정 패널 (창조 탭용: 토글 포함) */}
+        <GeminiApiPanel showEnabledToggle />
+
         <form onSubmit={onSubmit} className="space-y-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <InputField

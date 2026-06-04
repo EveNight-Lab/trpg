@@ -1,6 +1,7 @@
 import React from 'react';
 import { GeneratedCharacter } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import GeminiApiPanel from './GeminiApiPanel';
 
 interface AscensionModalProps {
   isOpen: boolean;
@@ -125,6 +126,11 @@ const AscensionModal: React.FC<AscensionModalProps> = ({ isOpen, onClose, charac
           <AbilityUnlockRow abilityType="trait" title={t('unlockNewTrait')} description={t('coreTraits')} />
           <AbilityUnlockRow abilityType="passive" title={t('unlockNewPassive')} description={t('passiveSkill')} />
           <AbilityUnlockRow abilityType="special" title={t('unlockNewActive')} description={t('specialSkill')} />
+        </div>
+
+        {/* AI 능력 해금 설정 */}
+        <div className="mb-4">
+          <GeminiApiPanel compact />
         </div>
 
         {/* Close button */}

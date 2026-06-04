@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GeneratedCharacter, Trait, PassiveSkill, TraitEffect, TraitConditionType, StatName, ResonancePassive } from '../../types';
 import { useLanguage, TranslationKeys } from '../../contexts/LanguageContext';
+import { getImageUrl } from '../../utils/imageUtils';
 import ConfirmationModal from '../ConfirmationModal';
 import HeptagonStats from '../HeptagonStats';
 import AscensionModal from '../AscensionModal';
@@ -235,7 +236,7 @@ const CharacterSheet: React.FC<CharacterSheetProps> = ({ character, onBack, onSa
                           <div className="w-full h-full rounded-xl overflow-hidden bg-black">
                          {character.image ? (
                             <img 
-                                src={`data:image/jpeg;base64,${character.image}`} 
+                                src={getImageUrl(character.image)} 
                                     alt={character.name}
                                     className="w-full h-full object-cover"
                             />

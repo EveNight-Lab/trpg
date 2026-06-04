@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GeneratedCharacter } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getImageUrl } from '../utils/imageUtils';
 
 interface BattleMementosModalProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ const BattleMementosModal: React.FC<BattleMementosModalProps> = ({ isOpen, onClo
       onClick={() => setSelectedImage(null)}
     >
       <img 
-        src={`data:image/jpeg;base64,${selectedImage}`} 
+        src={getImageUrl(selectedImage)} 
         alt="Enlarged battle memento"
         className="max-w-full max-h-full object-contain rounded-lg"
       />
@@ -52,7 +53,7 @@ const BattleMementosModal: React.FC<BattleMementosModalProps> = ({ isOpen, onClo
                     className="group relative aspect-square rounded-lg overflow-hidden ring-1 ring-slate-700 cursor-pointer"
                     onClick={() => setSelectedImage(victory.image)}
                   >
-                    <img src={`data:image/jpeg;base64,${victory.image}`} alt={`Victory against ${victory.opponentName}`} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                    <img src={getImageUrl(victory.image)} alt={`Victory against ${victory.opponentName}`} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                       <p className="text-xs text-white font-bold truncate">{t('victoryAgainst', { opponentName: victory.opponentName })}</p>
                     </div>

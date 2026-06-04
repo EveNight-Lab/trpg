@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GeneratedCharacter } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
+import { getImageUrl } from '../utils/imageUtils';
 
 interface CharacterGalleryProps {
     characters: GeneratedCharacter[];
@@ -86,7 +87,7 @@ const CharacterCard: React.FC<{
                     <div onClick={handleCardClick} className="cursor-pointer relative aspect-square overflow-hidden">
                         {character.image ? (
                             <img 
-                                src={`data:image/jpeg;base64,${character.image}`} 
+                                src={getImageUrl(character.image)} 
                                 alt={character.name} 
                                 className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${!isRecruited ? 'blur-md grayscale' : ''}`} 
                             />
