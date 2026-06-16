@@ -16,11 +16,16 @@ import RecruitmentResultModal from './components/RecruitmentResultModal';
 import LandingPage from './components/LandingPage';
 import { RESONANCE_EXP_PER_WIN, RESONANCE_EXP_PER_CHAT, RESONANCE_LEVEL_THRESHOLDS, RECRUITMENT_COOLDOWN_MS } from './utils/constants';
 import { useCharacterStorage, FIXED_BASE_STATS } from './hooks/useCharacterStorage';
+import { trackVisitor } from './utils/visitorTracker';
 
 type View = 'landing' | 'form' | 'sheet' | 'gallery' | 'battle' | 'chat';
 
 const AppContent: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    trackVisitor();
+  }, []);
   
   // App State
   const [view, setView] = useState<View>('landing');
