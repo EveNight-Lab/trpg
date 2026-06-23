@@ -14,6 +14,7 @@ import InterstitialAdModal from './components/InterstitialAdModal';
 import { getFinalCharacterStats } from './utils/diceUtils';
 import RecruitmentResultModal from './components/RecruitmentResultModal';
 import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
 import { RESONANCE_EXP_PER_WIN, RESONANCE_EXP_PER_CHAT, RESONANCE_LEVEL_THRESHOLDS, RECRUITMENT_COOLDOWN_MS } from './utils/constants';
 import { useCharacterStorage, FIXED_BASE_STATS } from './hooks/useCharacterStorage';
 import { trackVisitor } from './utils/visitorTracker';
@@ -576,6 +577,7 @@ const AppContent: React.FC = () => {
         )}
         
         {renderContent()}
+        <Footer />
       </main>
     </div>
   );
