@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
             </svg>
             <span>evenight331@gmail.com</span>
           </a>
-          <a href="https://lab.evenight.dev" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors flex items-center gap-1 font-semibold">
+          <a href="https://evenight.net" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors flex items-center gap-1 font-semibold">
             <div className="w-5 h-5 rounded bg-gradient-to-br from-amber-500/80 to-yellow-600/80 flex items-center justify-center shadow-sm">
               <svg className="w-3 h-3 text-black fill-current font-bold" viewBox="0 0 24 24">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
